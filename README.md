@@ -2,8 +2,8 @@
 This repository contains hands-on labs based on Cisco CCNA preparatory courses, focused on reinforcing fundamental networking concepts through practical configuration and analysis.
 
 ## 📚 Covered Courses
-CCNA: Introduction to Networks
-CCNA: Switching, Routing, and Wireless Essentials
+CCNA: Introduction to Networks<br/>
+CCNA: Switching, Routing, and Wireless Essentials<br/>
 CCNA: Enterprise Networking, Security, and Automation
 
 ## 🎯 Purpose
