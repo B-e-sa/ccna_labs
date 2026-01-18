@@ -1,12 +1,12 @@
-S3#show startup-config 
-Using 1237 bytes
+S1#show startup-config 
+Using 1112 bytes
 !
 version 12.1
 no service timestamps log datetime msec
 no service timestamps debug datetime msec
 no service password-encryption
 !
-hostname S3
+hostname S1
 !
 !
 !
@@ -17,42 +17,36 @@ ptp clock transparent domain 0 profile default
 spanning-tree mode pvst
 spanning-tree extend system-id
 !
-interface Port-channel2
+interface Port-channel1
  switchport trunk allowed vlan 10,20
  switchport mode trunk
 !
-interface Port-channel3
-!
-interface FastEthernet0/1
- description To PC1
- switchport access vlan 20
- switchport mode access
- spanning-tree portfast
- spanning-tree bpduguard enable
+interface GigabitEthernet0/1
+ description To Router
+ switchport trunk allowed vlan 10,20
+ switchport mode trunk
 !
 interface GigabitEthernet1/1
- description S1 EtherChannel
+ description S3 EtherChannel
  switchport trunk allowed vlan 10,20
  switchport mode trunk
- channel-group 3 mode active
 !
 interface GigabitEthernet2/1
- description S1 EtherChannel
+ description S3 EtherChannel
  switchport trunk allowed vlan 10,20
  switchport mode trunk
- channel-group 3 mode active
 !
 interface GigabitEthernet3/1
  description S2 EtherChannel
  switchport trunk allowed vlan 10,20
  switchport mode trunk
- channel-group 2 mode active
+ channel-group 1 mode active
 !
 interface GigabitEthernet4/1
  description S2 EtherChannel
  switchport trunk allowed vlan 10,20
  switchport mode trunk
- channel-group 2 mode active
+ channel-group 1 mode active
 !
 interface Vlan1
  no ip address
