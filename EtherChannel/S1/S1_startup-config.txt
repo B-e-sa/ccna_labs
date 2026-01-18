@@ -1,5 +1,5 @@
 S1#show startup-config 
-Using 934 bytes
+Using 1112 bytes
 !
 version 12.1
 no service timestamps log datetime msec
@@ -27,8 +27,14 @@ interface GigabitEthernet0/1
  switchport mode trunk
 !
 interface GigabitEthernet1/1
+ description S3 EtherChannel
+ switchport trunk allowed vlan 10,20
+ switchport mode trunk
 !
 interface GigabitEthernet2/1
+ description S3 EtherChannel
+ switchport trunk allowed vlan 10,20
+ switchport mode trunk
 !
 interface GigabitEthernet3/1
  description S2 EtherChannel
