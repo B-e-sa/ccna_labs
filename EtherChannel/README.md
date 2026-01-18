@@ -7,3 +7,6 @@ This laboratory simulates a EtherChannel configuration between three Layer 2 swi
 - The devices have custom Ethernet modules designed to facilitate configuration and debugging
 - The LACP protocol was used to configure the EtherChannels because it is an open IEEE standard (802.3ad), more widely adopted and multi-vendor, even though all devices in this lab are Cisco
 - PortFast and BPDUGuard is configured on switches access-ports (to PC0 and PC1)
+
+![Logical Topology](Logical_Topology.png)
+<br/><br/>![Physical Topology](Physical_Topology.png)
