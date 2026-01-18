@@ -1,14 +1,12 @@
-R1# show running-config 
-Building configuration...
-
-Current configuration : 637 bytes
+Router#show startup-config 
+Using 619 bytes
 !
-version 15.1
+version 12.2
 no service timestamps log datetime msec
 no service timestamps debug datetime msec
 no service password-encryption
 !
-hostname R1
+hostname Router
 !
 !
 !
@@ -17,13 +15,12 @@ hostname R1
 !
 !
 !
-ip cef
+no ip cef
 no ipv6 cef
 !
 !
 !
 !
-license udi pid CISCO1941/K9 sn FTX1524HL30-
 !
 !
 !
@@ -34,10 +31,6 @@ license udi pid CISCO1941/K9 sn FTX1524HL30-
 !
 !
 !
-!
-!
-!
-spanning-tree mode pvst
 !
 !
 !
@@ -46,23 +39,22 @@ spanning-tree mode pvst
 !
 interface GigabitEthernet0/0
  description LAN
- ip address 10.0.0.1 255.255.255.252
- duplex auto
- speed auto
-!
-interface GigabitEthernet0/1
  no ip address
  duplex auto
  speed auto
- shutdown
 !
-interface Vlan1
- no ip address
- shutdown
+interface GigabitEthernet0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+!
+interface GigabitEthernet0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
 !
 ip classless
 !
 ip flow-export version 9
+!
 !
 !
 !

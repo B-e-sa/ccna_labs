@@ -1,9 +1,9 @@
 # Layer 2 EtherChannel Laboratory
 
-This laboratory simulates a simple EtherChannel configuration between three Layer 2 switches.
+This laboratory simulates a EtherChannel configuration between three Layer 2 switches, with 2 hosts and 2 vlans
 
 **Notes:**
-- Unused ports are administratively shut down
-- Unused ports are assigned to VLAN 999 (reserved VLAN)
-- VLAN 999 is administratively shut down
-- PortFast is configured on S3 GigabiteEthernet 0/1 (access port)
+- Ping tests and devices configurations are located on their respective folders
+- The devices have custom Ethernet modules designed to facilitate configuration and debugging
+- The LACP protocol was used to configure the EtherChannels because it is an open IEEE standard (802.3ad), more widely adopted and multi-vendor, even though all devices in this lab are Cisco
+- PortFast and BPDUGuard is configured on switches access-ports (to PC0 and PC1)
