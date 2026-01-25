@@ -5,3 +5,6 @@ This laboratory simulates a Router-on-a-Stick configuration between 3 hosts and 
 **Notes:**
 - Ping tests and devices configurations are located on their respective folders
 - The devices have custom Ethernet modules designed to facilitate configuration and debugging
+
+![Logical Topology](Logical_Topology.png)
+<br/><br/>![Physical Topology](Physical_Topology.png)
