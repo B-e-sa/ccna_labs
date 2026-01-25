@@ -13,5 +13,6 @@ The topology includes internal routers distributed across OSPF Area 1 and Area 2
 - The OSPF border router acts as the gateway to external networks and it distribute it into the OSPF domain
 - The Internet router, connected to the border router through a serial link, represents external connectivity and serves as the next hop for the default route distributed within OSPF.
 
-- ![Logical Topology](Logical_Topology.png)
+![Logical Topology](Logical_Topology.png)
 <br/><br/>![Physical Topology](Physical_Topology.png)
+
