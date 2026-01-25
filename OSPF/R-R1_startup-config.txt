@@ -1,0 +1,93 @@
+!
+version 12.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R-R1
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description Border
+ ip address 187.13.75.50 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf priority 1
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet1/0
+ description R-R3
+ ip address 187.13.75.42 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf priority 1
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet2/0
+ description R-R2
+ ip address 187.13.75.18 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf priority 1
+ duplex auto
+ speed auto
+!
+router ospf 20
+ router-id 1.1.1.1
+ log-adjacency-changes
+ auto-cost reference-bandwidth 1000
+ network 187.13.75.40 0.0.0.3 area 2
+ network 187.13.75.48 0.0.0.3 area 2
+ network 187.13.75.16 0.0.0.3 area 2
+ default-information originate
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 GigabitEthernet2/0 187.13.75.17 
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+

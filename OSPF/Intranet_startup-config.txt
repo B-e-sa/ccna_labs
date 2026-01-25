@@ -1,0 +1,89 @@
+!
+version 12.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Intranet
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description Server2
+ ip address 10.96.0.1 255.255.255.224
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet1/0
+ description R-R3
+ ip address 187.13.75.82 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf priority 1
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet2/0
+ description R-R2
+ ip address 187.13.75.85 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf priority 1
+ duplex auto
+ speed auto
+!
+router ospf 20
+ log-adjacency-changes
+ passive-interface GigabitEthernet0/0
+ auto-cost reference-bandwidth 1000
+ network 187.13.75.80 0.0.0.3 area 2
+ network 187.13.75.84 0.0.0.3 area 2
+ network 10.96.0.0 0.0.31.255 area 2
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+

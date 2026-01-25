@@ -1,0 +1,87 @@
+!
+version 12.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname L-R2
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description L-R1
+ ip address 187.13.75.22 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf priority 1
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet1/0
+ description L-R1 Redundancy
+ ip address 172.16.1.2 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet9/0
+ description Server1
+ ip address 10.0.64.1 255.255.255.224
+ duplex auto
+ speed auto
+!
+router ospf 10
+ log-adjacency-changes
+ passive-interface GigabitEthernet9/0
+ auto-cost reference-bandwidth 1000
+ network 10.0.64.0 0.0.0.31 area 1
+ network 187.13.75.20 0.0.0.3 area 1
+ network 172.16.1.0 0.0.0.3 area 1
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+

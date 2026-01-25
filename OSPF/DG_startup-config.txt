@@ -1,0 +1,89 @@
+!
+version 12.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname DG
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Serial0/0
+ description Internet
+ ip address 8.8.8.1 255.255.255.0
+ clock rate 2000000
+!
+interface GigabitEthernet1/0
+ description OSPF Area1
+ ip address 187.13.75.17 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf priority 1
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet2/0
+ description OSPF Area2
+ ip address 187.13.75.14 255.255.255.252
+ ip ospf network point-to-point
+ ip ospf priority 1
+ duplex auto
+ speed auto
+!
+router ospf 15
+ log-adjacency-changes
+ auto-cost reference-bandwidth 1000
+ network 187.13.75.16 0.0.0.3 area 2
+ network 187.13.75.12 0.0.0.3 area 1
+ default-information originate
+!
+ip classless
+ip route 8.8.8.8 255.255.255.255 Serial0/0 
+ip route 0.0.0.0 0.0.0.0 Serial0/0 8.8.8.8 
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
