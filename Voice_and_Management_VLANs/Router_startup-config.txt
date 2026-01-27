@@ -1,0 +1,82 @@
+!
+version 12.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0.11
+ encapsulation dot1Q 11
+ ip address 192.168.11.1 255.255.255.0
+ ip helper-address 192.168.11.30
+!
+interface GigabitEthernet0/0.139
+ encapsulation dot1Q 139
+ ip address 192.168.13.41 255.255.255.248
+!
+interface GigabitEthernet0/0.204
+ encapsulation dot1Q 204
+ ip address 192.168.20.1 255.255.255.0
+ ip helper-address 192.168.11.30
+!
+interface GigabitEthernet0/0.333
+ encapsulation dot1Q 333 native
+ no ip address
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+

@@ -1,0 +1,11 @@
+C:\>ipconfig
+
+FastEthernet0 Connection:(default port)
+
+   Connection-specific DNS Suffix..: 
+   Link-local IPv6 Address.........: FE80::20A:41FF:FE3C:12E2
+   IPv6 Address....................: ::
+   IPv4 Address....................: 192.168.11.30
+   Subnet Mask.....................: 255.255.255.0
+   Default Gateway.................: ::
+                                     192.168.11.1
