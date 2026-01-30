@@ -1,4 +1,4 @@
-# Enterprise Campus Routing and Switching Laboratory
+# L2 and L3 Security
 
 This laboratory simulates a small enterprise campus network integrating **Layer 3 switching, inter-VLAN routing, WAN connectivity, and access-layer security features**.  
 The environment combines a multilayer switch acting as the **core/distribution layer**, access switches, edge routing, and an external WAN connection.
