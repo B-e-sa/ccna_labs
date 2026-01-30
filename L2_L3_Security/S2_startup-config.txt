@@ -1,0 +1,76 @@
+!
+version 12.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname S2
+!
+enable secret 5 $1$mERr$EJnmB234UvJf9yoQMWYJK/
+!
+!
+!
+ptp clock transparent domain 0 profile default
+ip ssh version 2
+ip domain-name cisco.com
+!
+username cisco secret 5 $1$mERr$EoY./Ucdcu2hDX1Yk5Cgj/
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface GigabitEthernet0/1
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ spanning-tree portfast
+!
+interface GigabitEthernet1/1
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ spanning-tree portfast
+!
+interface GigabitEthernet2/1
+ switchport trunk native vlan 77
+ switchport trunk allowed vlan 20,30,99
+ switchport mode trunk
+!
+interface GigabitEthernet3/1
+ switchport access vlan 99
+ switchport mode access
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan99
+ ip address 192.168.99.26 255.255.255.224
+!
+ip default-gateway 192.168.99.1
+!
+!
+!
+!
+access-list 199 permit tcp 192.168.99.0 0.0.0.31 any eq 22
+line con 0
+ password 7 0822455D0A1606181C1B0D1739
+ login
+!
+line vty 0 4
+ access-class 199 in
+ password 7 0822455D0A16131E001B0D1739
+ login local
+ transport input ssh
+line vty 5 15
+ login
+!
+!
+!
+!
+end
+

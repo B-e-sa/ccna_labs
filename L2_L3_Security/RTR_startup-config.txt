@@ -1,0 +1,90 @@
+!
+version 12.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname RTR
+!
+!
+!
+enable password ciscoenpass
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+username cisco secret 5 $1$mERr$EoY./Ucdcu2hDX1Yk5Cgj/
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip ssh version 2
+ip domain-name cisco.com
+!
+!
+!
+!
+!
+!
+!
+!
+interface Serial0/0
+ ip address 8.8.8.7 255.255.255.0
+ ip access-group DENY-EXTERNAL in
+ clock rate 2000000
+!
+interface GigabitEthernet1/0
+ ip address 172.16.99.1 255.255.255.252
+ duplex auto
+ speed auto
+!
+ip classless
+ip route 192.168.99.0 255.255.255.224 172.16.99.2 
+ip route 192.168.10.0 255.255.255.0 172.16.99.2 
+ip route 192.168.20.0 255.255.255.248 172.16.99.2 
+ip route 192.168.30.0 255.255.255.0 172.16.99.2 
+!
+ip flow-export version 9
+!
+!
+ip access-list extended DENY-EXTERNAL
+ permit icmp any any echo-reply
+ permit icmp any any unreachable
+ deny icmp any any echo
+ permit tcp any any established
+access-list 199 permit tcp 192.168.99.0 0.0.0.31 any eq 22
+!
+!
+!
+!
+!
+!
+line con 0
+ password ciscoconpass
+ login
+!
+line aux 0
+!
+line vty 0 4
+ access-class 199 in
+ password ciscovirpass
+ login local
+ transport input ssh
+!
+!
+!
+end
+
